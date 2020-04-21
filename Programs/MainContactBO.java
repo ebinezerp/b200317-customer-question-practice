@@ -26,6 +26,7 @@ public class MainContactBO {
 		}
 
 		while (true) {
+			System.out.println();
 			System.out.println("Enter the search type:");
 			System.out.println("1.By name \n2.By birth date \n3.By rating");
 			int option = sc.nextInt();
@@ -37,16 +38,15 @@ public class MainContactBO {
 				String customerName = sc.nextLine();
 				System.out.println();
 				List<Customer> list = BO.findCustomer(customerList, customerName);
-
-				Iterator<Customer> itr = list.iterator();
-				while (itr.hasNext()) {
-					System.out.print(itr.next() + " ");
-					System.out.println();
+				if (list.isEmpty()) {
+					System.out.println("No customers found with the given name");
+				} else {
+					Iterator<Customer> itr = list.iterator();
+					while (itr.hasNext()) {
+						System.out.print(itr.next() + " ");
+						System.out.println();
+					}
 				}
-				/*
-				 * if (list == null) {
-				 * System.out.println("No customers found with the given name"); }
-				 */
 				break;
 			}
 			case 2: {
@@ -56,16 +56,15 @@ public class MainContactBO {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 				Date date1 = sdf.parse(date);
 				List<Customer> list = BO.findCustomer(customerList, date1);
-
-				Iterator<Customer> itr = list.iterator();
-				while (itr.hasNext()) {
-					System.out.println(itr.next() + " ");
-					System.out.println();
+				if (list.isEmpty()) {
+					System.out.println("No customers found with the given date");
+				} else {
+					Iterator<Customer> itr = list.iterator();
+					while (itr.hasNext()) {
+						System.out.println(itr.next() + " ");
+						System.out.println();
+					}
 				}
-				/*
-				 * if (list == null) {
-				 * System.out.println("No customers found with the given date"); }
-				 */
 				break;
 			}
 			case 3: {
@@ -74,17 +73,16 @@ public class MainContactBO {
 				System.out.println();
 				Double rating = Double.parseDouble(Rating);
 				List<Customer> list = BO.findCustomer(customerList, rating);
+				if (list.isEmpty()) {
+					System.out.println("No customers found with the given rating");
+				} else {
+					Iterator<Customer> it = list.iterator();
+					while (it.hasNext()) {
+						System.out.print(it.next() + " ");
 
-				Iterator<Customer> it = list.iterator();
-				while (it.hasNext()) {
-					System.out.print(it.next() + " ");
-
-					System.out.println();
+						System.out.println();
+					}
 				}
-				/*
-				 * if (list == null) {
-				 * System.out.println("No customers found with the given rating"); }
-				 */
 				break;
 			}
 			default: {
