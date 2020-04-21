@@ -95,10 +95,21 @@ public class Customer {
 		this.rating = rating;
 	}
 
+	/*
+	 * public String toString() { return "Id:" + id + "\nName:" + this.name +
+	 * "\nMobile Number:" + this.mobileNumber + "\nDate of Birth:" + this.birthdate
+	 * + "\nAverage spent amount:" + this.averageSpendAmount + "\nTotal amount:" +
+	 * this.totalAmount + "\nDate Enrolled:" + this.dateEnrolled + "\nRating:" +
+	 * this.rating; }
+	 */
+
+	@Override
 	public String toString() {
-		return "Id:" + id + "\nName:" + this.name + "\nMobile Number:" + this.mobileNumber + "\nDate of Birth:"
-				+ this.birthdate + "\nAverage spent amount:" + this.averageSpendAmount + "\nTotal amount:"
-				+ this.totalAmount + "\nDate Enrolled:" + this.dateEnrolled + "\nRating:" + this.rating;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		String formatedDate = sdf.format(birthdate);
+		String formatedDate1 = sdf.format(dateEnrolled);
+		return String.format("%-5s %-15s %-15s %-15s %-20s %-15s %-15s %s\n", id, name, mobileNumber, formatedDate,
+				averageSpendAmount, totalAmount, formatedDate1, rating);
 	}
 
 	public boolean equals(Object obj) {
@@ -117,4 +128,5 @@ public class Customer {
 		}
 		return true;
 	}
+
 }
