@@ -42,11 +42,7 @@ public class ContactBO {
 		List<Customer> typedCustomer = new ArrayList<Customer>();
 
 		for (Customer customer : customerList) {
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-			String d1 = sdf.format(customer.getBirthdate());
-			String d2 = sdf.format(birth);
-			if (d1.equals(d2)) {
+			if (customer.getBirthdate().equals(birth)) {
 				typedCustomer.add(customer);
 			}
 		}
@@ -58,9 +54,7 @@ public class ContactBO {
 		List<Customer> typedCustomer = new ArrayList<Customer>();
 
 		for (Customer customer : customerList) {
-			String d1 = Double.toString(customer.getRating());
-			String d2 = Double.toString(rating);
-			if (d1.equals(d2)) {
+			if (customer.getRating().equals(rating)) {
 				typedCustomer.add(customer);
 			}
 		}

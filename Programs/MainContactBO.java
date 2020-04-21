@@ -79,7 +79,6 @@ public class MainContactBO {
 					Iterator<Customer> it = list.iterator();
 					while (it.hasNext()) {
 						System.out.print(it.next() + " ");
-
 						System.out.println();
 					}
 				}

@@ -106,10 +106,10 @@ public class Customer {
 	@Override
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		String formatedDate = sdf.format(birthdate);
-		String formatedDate1 = sdf.format(dateEnrolled);
-		return String.format("%-5s %-15s %-15s %-15s %-20s %-15s %-15s %s\n", id, name, mobileNumber, formatedDate,
-				averageSpendAmount, totalAmount, formatedDate1, rating);
+		String dateOfBirth = sdf.format(birthdate);
+		String enrolledDate = sdf.format(dateEnrolled);
+		return String.format("%-5s %-15s %-15s %-15s %-20s %-15s %-15s %s\n", id, name, mobileNumber, dateOfBirth,
+				averageSpendAmount, totalAmount, enrolledDate, rating);
 	}
 
 	public boolean equals(Object obj) {
@@ -119,10 +119,7 @@ public class Customer {
 			if (!this.mobileNumber.equals(cus.mobileNumber)) {
 				return false;
 			}
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-			String d1 = sdf.format(this.birthdate);
-			String d2 = sdf.format(cus.birthdate);
-			if (!d1.equals(d2)) {
+			if (!this.birthdate.equals(cus.birthdate)) {
 				return false;
 			}
 		}
