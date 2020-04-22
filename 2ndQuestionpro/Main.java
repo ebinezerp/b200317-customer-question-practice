@@ -14,14 +14,14 @@ public class Main {
 	
 	public static void main(String[] args) throws ParseException {
 		Scanner sc = new Scanner(System.in);
-		ContactBO BO = new ContactBO();
+		// ContactBO BO = new ContactBO();
 		System.out.println("Enter the number of customers: ");
 		int num = sc.nextInt();
 		sc.nextLine();
 		List<Customer> customerList = new ArrayList<Customer>();
 		for (int i = 0; i < num; i++) {
 			String customerDetails = sc.nextLine();
-			Customer customer = BO.createCustomer(customerDetails);
+			Customer customer = ContactBO.createCustomer(customerDetails);
 			customerList.add(customer);
 		}
 		while (true) {
@@ -33,7 +33,7 @@ public class Main {
 			case 1: {
 				System.out.println("Enter the name of the customer");
 				String name = sc.nextLine();
-				List<Customer> list = BO.findCustomer(customerList,name);
+				List<Customer> list =ContactBO.findCustomer(customerList,name);
 				if (list.isEmpty()) 
 				{
 					System.out.println("No customers found with the given name");
@@ -54,7 +54,7 @@ public class Main {
 				System.out.println();
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 				Date date1 = sdf.parse(date);
-				List<Customer> list = BO.findCustomer(customerList, date1);
+				List<Customer> list = ContactBO.findCustomer(customerList, date1);
 				if (list.isEmpty()) {
 					System.out.println("No customers found with the given date");
 				} else {
@@ -70,10 +70,10 @@ public class Main {
 				
 			case 3: {
 				System.out.println("Enter the rating of the customer to be searched:");
-				String Rating = sc.nextLine();
+				String rating = sc.nextLine();
 				System.out.println();
-				Double rating = Double.parseDouble(Rating);
-				List<Customer> list = BO.findCustomer(customerList, rating);
+				Double rating2 = Double.parseDouble(rating);
+				List<Customer> list = ContactBO.findCustomer(customerList, rating2);
 				if (list.isEmpty()) {
 					System.out.println("No customers found with the given rating");
 				} else {
@@ -87,6 +87,7 @@ public class Main {
 			}
 			default: {
 				System.out.println("Invalid choice");
+				sc.close();
 				System.exit(0);
 				
 			}

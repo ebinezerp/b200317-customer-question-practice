@@ -57,6 +57,10 @@ public class ContactBO {
 			List<Customer> list = new ArrayList<Customer>();
 			for(Customer customer : customerList)
 			{
+				
+				// what is need to convert date type to String?
+				// Don't we have equals method in Date class ?
+				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 				String date1 = sdf.format(customer.getBirthDate());
 				String date2 = sdf.format(birth);
@@ -74,6 +78,8 @@ public class ContactBO {
 			List<Customer> list= new ArrayList<Customer>();
 			for(Customer customer : customerList)
 			{
+				
+				// Don't we have equals method in Double class ?
 				String d1 = Double.toString(customer.getRating());
 				String d2 = Double.toString(rating);
 				if (d1.equals(d2)) {

@@ -3,11 +3,10 @@ package practicedQuestion4;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
 import java.util.Date;
 
 
-public class Customer implements Comparator {
+public class Customer implements Comparable<Customer> {
 
 	private Long id;
 	private String name;
@@ -151,14 +150,8 @@ public class Customer implements Comparator {
 		return true;
 	}
 
-	public int compare(Object obj1, Object obj2) {
-		if (obj1 == obj2) {
-			return 0;
-		}
-		Customer customer1 = (Customer) obj1;
-		Customer customer2 = (Customer) obj2;
-
-		return customer1.getName().compareTo(customer2.getName());
+	public int compareTo(Customer o){
+		
+		return this.getName().compareTo(o.getName());
 	}
-
 }

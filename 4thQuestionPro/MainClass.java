@@ -1,7 +1,5 @@
 package practicedQuestion4;
 
-
-
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,8 +29,10 @@ public class MainClass {
 			sc.nextLine();
 			switch (choice) {
 			case 1: {
-						Collections.sort(customerList,new Customer());
-						Iterator it = customerList.iterator();
+				
+						
+						Collections.sort(customerList);
+						Iterator<Customer> it = customerList.iterator();
 						while (it.hasNext()) {
 						System.out.print(it.next() + " ");
 						System.out.println();
@@ -41,7 +41,7 @@ public class MainClass {
 					}
 			case 2:{
 						Collections.sort(customerList, new AmountComparator());
-						Iterator it = customerList.iterator();
+						Iterator<Customer> it = customerList.iterator();
 						while (it.hasNext()) {
 						System.out.print(it.next() + " ");
 						System.out.println();
@@ -50,7 +50,7 @@ public class MainClass {
 					}
 			case 3:{
 						Collections.sort(customerList, new RatingComparator());
-						Iterator it = customerList.iterator();
+						Iterator<Customer> it = customerList.iterator();
 						while (it.hasNext()) {
 						System.out.print(it.next() + " ");
 						System.out.println();
@@ -59,6 +59,7 @@ public class MainClass {
 					}
 			case 4:
 				        System.out.println("inavalid choice");
+				        sc.close();
 					    System.exit(0);
 			}
 		}		
