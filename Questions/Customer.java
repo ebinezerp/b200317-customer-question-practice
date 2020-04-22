@@ -42,7 +42,7 @@ public class Customer {
 	public void setTotalAmount(Double totalAmount){
 		this.totalAmount=totalAmount;
 	}
-	public void setDateEnrolled(Double dateEnrolled){
+	public void setDateEnrolled(Date dateEnrolled){
 		this.dateEnrolled=dateEnrolled;
 	}
 	public void setRating(Double rating){
@@ -73,17 +73,17 @@ public class Customer {
 		return rating;
 	}
 	public String toSting(){
-		return  "id: "+id+"\nName: "+name+"\nMobile Number: "+mobileNumber+
+		/*return  "id: "+id+"\nName: "+name+"\nMobile Number: "+mobileNumber+
 		        "\nDate of Birth: "+birthdate+"\nAverage Spend Amount: "+averageSpendAmount+
-		        "\nTotal Amount: "+totalAmount+"\nDate Enrolled: "+dateEnrolled+"\nRating: "+rating;
+		        "\nTotal Amount: "+totalAmount+"\nDate Enrolled: "+dateEnrolled+"\nRating: "+rating;*/
+				return String.format("%-5s %-15s %-15s %-15s %-20s %-15s %-15s %s\n", "Id","Name","Mobile Number",
+				"Date of Birth","Average spend amount","Total amount","Date Enrolled","Rating");
 	}
 	
 	public boolean equals(Object obj){
 		if (obj instanceof Customer){
 			Customer customer = (Customer)obj;
-			if(!this.name.equals(customer.name)){
-				return false;
-			}
+			
 			if (!this.mobileNumber.equals(customer.mobileNumber)){
 				return false;
 			}

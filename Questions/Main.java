@@ -13,19 +13,18 @@ public class Main{
 		
         System.out.println("Enter the details of customer 1: ");		
 		String customer1 = sc.nextLine();
-		System.out.println("Enter thr details of customer 2: ");
+		System.out.println("Enter the details of customer 2: ");
 		String customer2 = sc.nextLine();
 		
 		String[] customer1=cust1.split(",");
 		String[] customer2=cust2.split(",");
 		
 		Long id = Long.parseLong(customer1[0]);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		Date birthdate = sdf.parse(customer1[3]);
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		Date dateOfBirth=sdf.parse(customer1[3]);
 		Double averageSpendAmount = Double.parseDouble(customer1[4]);
 		Double totalAmount = Double.parseDouble(customer1[5]);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		Date enrolledDate = sdf.parse(customer1[6]);
+		Date dateCreated=sdf.parse(customer1[6]);
 		Double rating = Double.parseDouble(customer1[7]);
 		
 		
@@ -39,7 +38,6 @@ public class Main{
 		user1.setDateEnrolled(dateEnrolled);
 		user1.setRating(rating);
 
-		System.out.println(user1);
 		
 		Long id = Long.parseLong(customer2[0]);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -59,6 +57,7 @@ public class Main{
 		user2.setDateEnrolled(dateEnrolled);
 		user2.setRating(rating);
 		
+		System.out.println(user1);
 		System.out.println(user2);
 		
 		if (user1.equals(user2)) {
