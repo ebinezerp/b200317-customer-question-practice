@@ -115,7 +115,7 @@ public class Customer {
 	public boolean equals(Object obj) {
 		if (obj instanceof Customer) {
 			Customer cus = (Customer) obj;
-
+			
 			if (!this.mobileNumber.equals(cus.mobileNumber)) {
 				return false;
 			}

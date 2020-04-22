@@ -1,10 +1,9 @@
 package question4;
 
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
 import java.util.Date;
 
-public class Customer implements Comparator {
+public class Customer implements Comparable<Customer> {
 
 	private Long id;
 	private String name;
@@ -117,6 +116,9 @@ public class Customer implements Comparator {
 		if (obj instanceof Customer) {
 			Customer cus = (Customer) obj;
 
+			if (!this.getName().equals(cus.getName())) {
+				return false;
+			}
 			if (!this.mobileNumber.equals(cus.mobileNumber)) {
 				return false;
 			}
@@ -127,14 +129,10 @@ public class Customer implements Comparator {
 		return true;
 	}
 
-	public int compare(Object o1, Object o2) {
-		if (o1 == o2) {
-			return 0;
-		}
-		Customer customer1 = (Customer) o1;
-		Customer customer2 = (Customer) o2;
+	@Override
+	public int compareTo(Customer o1) {
 
-		return customer1.getName().compareTo(customer2.getName());
+		return this.getName().compareTo(o1.getName());
 	}
 
 }

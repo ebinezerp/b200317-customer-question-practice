@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) throws ParseException {
 
 		Scanner sc = new Scanner(System.in);
-		ContactBO BO = new ContactBO();
+		// ContactBO BO = new ContactBO();
 
 		List<Customer> customerList = new ArrayList<Customer>();
 		System.out.println("Enter the number of customers:");
@@ -21,7 +21,7 @@ public class Main {
 
 		for (int i = 0; i < num; i++) {
 			String customerDetails = sc.nextLine();
-			Customer customer = BO.createCustomer(customerDetails);
+			Customer customer = ContactBO.createCustomer(customerDetails);
 			customerList.add(customer);
 		}
 
@@ -33,8 +33,8 @@ public class Main {
 
 			switch (option) {
 			case 1: {
-				Collections.sort(customerList, new Customer());
-				Iterator iterator = customerList.iterator();
+				Collections.sort(customerList);
+				Iterator<Customer> iterator = customerList.iterator();
 				while (iterator.hasNext()) {
 					System.out.println(iterator.next() + " ");
 					System.out.println();
@@ -43,7 +43,7 @@ public class Main {
 			}
 			case 2: {
 				Collections.sort(customerList, new AmountComparator());
-				Iterator iterator = customerList.iterator();
+				Iterator<Customer> iterator = customerList.iterator();
 				while (iterator.hasNext()) {
 					System.out.println(iterator.next() + " ");
 					System.out.println();
@@ -52,7 +52,7 @@ public class Main {
 			}
 			case 3: {
 				Collections.sort(customerList, new RatingComparator());
-				Iterator iterator = customerList.iterator();
+				Iterator<Customer> iterator = customerList.iterator();
 				while (iterator.hasNext()) {
 					System.out.println(iterator.next() + " ");
 					System.out.println();
@@ -60,6 +60,7 @@ public class Main {
 				break;
 			}
 			default: {
+				sc.close();
 				System.exit(0);
 			}
 			}

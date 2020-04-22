@@ -13,15 +13,15 @@ public class MainContactBO {
 	public static void main(String[] args) throws ParseException {
 
 		Scanner sc = new Scanner(System.in);
-		ContactBO BO = new ContactBO();
-		List<Customer> customerList = new ArrayList();
+		// ContactBO BO = new ContactBO();
+		List<Customer> customerList = new ArrayList<Customer>();
 		System.out.println("Enter the number of Customers:");
 		int num = sc.nextInt();
 		sc.nextLine();
 
 		for (int i = 0; i < num; i++) {
 			String customerDetails = sc.nextLine();
-			Customer customer = BO.createCustomer(customerDetails);
+			Customer customer = ContactBO.createCustomer(customerDetails);
 			customerList.add(customer);
 		}
 
@@ -37,7 +37,7 @@ public class MainContactBO {
 				System.out.println("Enter the name of the customer to be searched:");
 				String customerName = sc.nextLine();
 				System.out.println();
-				List<Customer> list = BO.findCustomer(customerList, customerName);
+				List<Customer> list = ContactBO.findCustomer(customerList, customerName);
 				if (list.isEmpty()) {
 					System.out.println("No customers found with the given name");
 				} else {
@@ -55,7 +55,7 @@ public class MainContactBO {
 				System.out.println();
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 				Date date1 = sdf.parse(date);
-				List<Customer> list = BO.findCustomer(customerList, date1);
+				List<Customer> list = ContactBO.findCustomer(customerList, date1);
 				if (list.isEmpty()) {
 					System.out.println("No customers found with the given date");
 				} else {
@@ -72,7 +72,7 @@ public class MainContactBO {
 				String Rating = sc.nextLine();
 				System.out.println();
 				Double rating = Double.parseDouble(Rating);
-				List<Customer> list = BO.findCustomer(customerList, rating);
+				List<Customer> list = ContactBO.findCustomer(customerList, rating);
 				if (list.isEmpty()) {
 					System.out.println("No customers found with the given rating");
 				} else {
@@ -85,12 +85,12 @@ public class MainContactBO {
 				break;
 			}
 			default: {
+				sc.close();
 				System.exit(0);
 			}
 			}
 
 		}
-
 	}
 
 }
