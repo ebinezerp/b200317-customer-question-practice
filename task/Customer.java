@@ -74,10 +74,17 @@ class Customer{
   public Double getRating(){
       return rating;
   }
-  public String toString(){
+  /*public String toString(){
      return "id:"+id+"\nName:"+name+"\nMobile Number:"+mobileNumber+"\nBirth Date:"+birthdate+"\nAverage Spend Amount:"+averageSpendAmount+"\nTotal Amount:"+totalAmount+"\nDate Enrolled:"+dateEnrolled+"\nRating:"+rating;
 	 
-  }
+  }*/
+  public String toString(){
+	     SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		 String birthDate=sdf.format(birthdate);
+		 String dateenrolled=sdf.format(dateEnrolled);
+		 
+		 return String.format("%-5s %-15s %-15s %-15s %-20s %-15s %-15s\n","id","Name","Mobile Number","Date of Birth","Average Spent amount","Total amount","Rating");
+	 }
 						
 	// comparing the customer refference is equal to the object refference
   public boolean equals(Object obj){
