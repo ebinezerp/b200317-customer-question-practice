@@ -39,7 +39,7 @@ public class Application{
 						break;
 					}
 			case 2:{
-						Collections.sort(customerList, new AverageSpendAmountComparator());
+						Collections.sort(customerList, new AmountComparator());
 						Iterator it = customerList.iterator();
 						while (it.hasNext()) {
 						System.out.print(it.next() + " ");

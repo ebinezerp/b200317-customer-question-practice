@@ -1,8 +1,8 @@
-import java.util.Comparable;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
-public class Customer implements Comparable{
+public class Customer implements Comparable<Customer>{
     
     private Long id;
 	private String name;
@@ -76,35 +76,59 @@ public class Customer implements Comparable{
 		return rating;
 	}
     
-	public String toString{
-		SimpleDateFormatsdf = new SimpleDateFormat("dd-MM-yyyy");
-		String dateofbirth = sdf.format(birthdate);
+	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		String dateOfBirth = sdf.format(birthdate);
 		String enrolledDate = sdf.format(dateEnrolled);
-		return String.format("%-5s %-15s %-15s %-15s %-20s %-15s %-15s %s\n", "Id","Name","Mobile Number",
-				"Date of Birth","Average spend amount","Total amount","Date Enrolled","Rating");
+		return String.format("%-5s %-15s %-15s %-15s %-20s %-15s %-15s %s\n", id, name, mobileNumber,
+				birthdate,averageSpendAmount, totalAmount,dateEnrolled, rating);
 	}
 	
-	public boolean equals(Object obj){
-		if (obj instanceof Customer){
-			Customer customer = (Customer)obj;
-			
-			if (!this.mobileNumber.equals(customer.mobileNumber)){
-				return false;
-			}
-			if (!this.birthdate.equals(customer.birthdate)){
-				return false;
-			}
-		}
-		return false;
+	public static Customer createCustomer(String line) throws ParseException {
+		String[] customerDetails = line.split(",");
+
+		Customer newCustomer = new Customer();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		newCustomer.setId(Long.parseLong(customerDetails[0]));
+		newCustomer.setName(customerDetails[1]);
+		newCustomer.setMobileNumber(customerDetails[2]);
+		newCustomer.setBirthdate(sdf.parse(customerDetails[3]));
+		newCustomer.setAverageSpendAmount(Double.parseDouble(customerDetails[4]));
+		newCustomer.setTotalAmount(Double.parseDouble(customerDetails[5]));
+		newCustomer.setDateEnrolled(sdf.parse(customerDetails[6]));
+		newCustomer.setRating(Double.parseDouble(customerDetails[7]));
+
+		return newCustomer;
 	}
 
-     public int compareTo(Object o1, Object o2){
-		 if(o1 == o2){
-			 return 0;
-		 }
-		 Customer customer1 = (Customer) o1;
-		 Customer customer2 = (Customer) o2;
-		 return customer1.getName().compareTo(customer2.getName());
-	 }
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		if (birthdate == null) {
+			if (other.birthdate != null)
+				return false;
+		} else if (!birthdate.equals(other.birthdate))
+			return false;
+		if (mobileNumber == null) {
+			if (other.mobileNumber != null)
+				return false;
+		} else if (!mobileNumber.equals(other.mobileNumber))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
 
+	public int compareTo(Customer o){
+		
+		return this.getName().compareTo(o.getName());
+	}
 }

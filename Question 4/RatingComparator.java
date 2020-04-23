@@ -1,15 +1,10 @@
 import java.util.Comparator;
 
-public class RatingComparator implements Comparator{
+public class RatingComparator implements Comparator<Customer>{
 
-	public int compare(Object o1,Object o2){
-		if(o1==o2){
-			return 0;
-		}
+	public int compare(Customer obj1,Customer obj2){
+		
 
-		Customer cust1=(Customer)o1;
-		Customer cust2=(Customer)o2;
-
-			return cust1.getRating().compareTo(cust2.getRating());
+			return obj1.getRating().compareTo(obj2.getRating());
 	}
 }	

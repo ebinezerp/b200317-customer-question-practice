@@ -1,13 +1,9 @@
-public class AmountComparator implements Comparator{
-     public int compare(Object obj1,Object obj2){
-		if(obj1==obj2){
-			return 0;
-		}
+import java.util.Comparator;
 
-		Customer cust1=(Customer)o1;
-		Customer cust2=(Customer)o2;
+public class AmountComparator implements Comparator<Customer>{
+     public int compare(Customer obj1,Customer obj2){
 
-			return cust1.getAverageSpendAmount().compareTo(cust2.getAverageSpendAmount());
+			return obj1.getAverageSpendAmount().compareTo(obj2.getAverageSpendAmount());
 	
 	}
 
